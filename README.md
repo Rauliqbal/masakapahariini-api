@@ -7,9 +7,16 @@ An unofficial API from [Masakapahariini](https://www.masakapahariini.com/). I ma
 
 ## API Reference
 
-#### Get all items
 
-```http
+#### Base URL
+
+```
+https://masakapahariini-api
+```
+
+#### Get New Recipes
+
+```BASH
 /api/v1/recipes
 ```
 
@@ -17,20 +24,16 @@ An unofficial API from [Masakapahariini](https://www.masakapahariini.com/). I ma
 | :-------- | :------- | :------------------------- |
 | `GET` | `string` | Get list new recipes |
 
-#### Get item
+#### Get Recipes by Page
 
-```HTTP
-/api/v1/recipes/:page
+```BASH
+/api/v1/recipes/:id
 ```
 `ex: /api/v1/recipes/2 `
 
 | Method | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `GET`      | `string` | Get recipes details |
-
-#### add(num1, num2)
-
-Takes two numbers and returns the sum.
+| `GET`      | `string` | Get recipes by page |
 
 
 ## License
