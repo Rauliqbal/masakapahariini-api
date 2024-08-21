@@ -1,0 +1,26 @@
+{
+  "name": "resepmasakan-api",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "pnpx run index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.4",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "cache-express": "^1.0.2",
+    "dotenv": "^16.4.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4"
+  }
+}
