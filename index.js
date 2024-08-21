@@ -24,5 +24,5 @@ app.use('/api/v1', route)
 
 // Server 
 app.listen(3000, () => {
-   console.log('Resepmasakan is Running on port 3000!🥗🍜🍛🍲')
+   console.log('Server is Running on port 3000!🥗🍜🍛🍲')
 })
