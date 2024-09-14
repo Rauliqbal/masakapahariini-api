@@ -96,8 +96,10 @@ export const getRecipeDetail = async (req, res) => {
 
     const detail = $("main");
     const elIngredients = $('._recipe-ingredients')
+    const elSteps =  $('._recipe-steps');
     let title, thumbnail, user, releaseDate, description, duration, difficulty;
-    let  quantity,itemIngredient
+    let  quantity, itemIngredient
+    let itemSteps
 
     detail.each((idx, el) => {
       title = $(el).find("header h1").text().split("|")[0].trim();
@@ -107,7 +109,6 @@ export const getRecipeDetail = async (req, res) => {
       duration = $(el).find("._recipe-header ._recipe-features span").text().trim();
       difficulty = $(el).find("._recipe-header ._recipe-features a.icon_difficulty").text().trim();
       description = $(el).find(".content p").first().text();
-      // instructions = $(el).find("._recipe-instructions ol li").text();
     });
 
     const author = {
@@ -115,23 +116,7 @@ export const getRecipeDetail = async (req, res) => {
       releaseDate
     }
 
-    //        let ingredientsArr = [];
-    //         elementIngredients.find('.d-flex').each((i, e) => {
-    //             let term = '';
-    //             quantity = $(e).find('.part').text().trim();
-    //             metaIngredient = $(e).find('.item').text().trim().split('\r\t')[0];
-    //             metaIngredient = metaIngredient.split('\t'); 
-    //             if (metaIngredient[0] != '') {
-    //                 term = metaIngredient[0].replace('\n', '').trim() + ' '
-    //                     + metaIngredient[metaIngredient.length - 1].replace('\n', '').trim();
-    //                 ingredients = `${quantity} ${term}`;
-    //                 ingredientsArr.push(ingredients)
-    //             }
-    //         });
-
-    //         object.ingredient = ingredientsArr;  
-    
-    // ingrediens
+    // Ingredients
     let ingredientArr = []
     elIngredients.find('.d-flex').each((idx, el) => {
       let item = ''
@@ -139,16 +124,23 @@ export const getRecipeDetail = async (req, res) => {
       itemIngredient = $(el).find('.item').text().trim().split('\r\t')[0]
       itemIngredient = itemIngredient.split('\t')
       if (itemIngredient[0] != '') {
-        item = itemIngredient[0].replace('\n', "").trim() + ' ' + itemIngredient[itemIngredient.length - 1].replace('\n', '').trim()
+        item = itemIngredient[0].trim() + ' ' + itemIngredient[itemIngredient.length - 1].replace('\n', '').trim()
 
         const ingredient = `${quantity } ${item}`
         ingredientArr.push(ingredient)
       }
-      
     })
-
     const ingredients = ingredientArr
    
+    // Step Step
+    let stepArr = []
+    elSteps.find('.step').each((idx, el) => {
+      itemSteps = $(el).find('.content p').text()
+
+      stepArr.push(itemSteps)
+    })
+    const steps = stepArr
+
     const resep = {
       title,
       thumbnail,
@@ -156,7 +148,8 @@ export const getRecipeDetail = async (req, res) => {
       difficulty,
       description,
       author,
-     ingredients
+     ingredients,
+     steps
     }
 
     res.status(200).json({
