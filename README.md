@@ -11,7 +11,7 @@ An unofficial API from [Masakapahariini](https://www.masakapahariini.com/). I ma
 #### Base URL
 
 ```
-https://masakapahariini-api
+https://masakapahariini-api.vercel.app/
 ```
 
 #### Get New Recipes
